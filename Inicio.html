@@ -18,11 +18,14 @@
         </div>
     </header>
     <body>
-        <div class="container col-3">
+        <div class="container col-3 p-3">
             <h6 style="text-align: center;">Indique la direccion URL desde donde se obtendra la imagen</h6>
             <input id="direccion" class="form-control" type="text" name="direccion" placeholder="Direccion URL" />
-            <h6 style="text-align: center;">Filtros de reconocimiento</h6>
-            <div style="text-align: center;">
+            <div class="form-check form-switch">
+                <label class="form-check-label" for="Aplicarfiltros">Aplicar filtros</label>
+                <input class="form-check-input" onclick="ocultarFiltros()" type="checkbox" id="Aplicarfiltros">
+            </div>
+            <div id="filtros" style="text-align: center; display: none;">
                 <label style="text-align: center;">Hombre</label>
                 <input class="form-check-input-inline" type="checkbox" value="Male" id="Hombre" checked>
                 <label style="text-align: center;">Mujer</label>
@@ -33,7 +36,7 @@
                 <label style="text-align: center;">Edad maxima</label>
                 <input id="edadMax" class="form-control" type="number" name="edadMax" placeholder="Edad maxima" min="0" value="99"/>
             </div>
-            <button class="btn btn-dark col-12" onclick="pedir()">Analizar caras</button>
+            <button class="btn btn-outline-dark col-12" onclick="pedir()">Analizar caras</button>
         </div>
         <div style="width: 100%; text-align:center;">
             <canvas id="myCanvas" width="1000" height="1000" style="border:1px solid #d3d3d3; display: inline;">
