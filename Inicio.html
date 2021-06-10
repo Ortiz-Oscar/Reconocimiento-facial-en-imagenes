@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset='utf-8'>
+        <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+        <title>Proyecto redes</title>
+        <meta name='viewport' content='width=device-width, initial-scale=1'>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="style/bootstrap.css">
+        <link rel="stylesheet" href="style/bootstrap.min.css">
+    </head>
+    <header class="navbar navbar-expand-lg navbar-light bg-dark">
+        <div class="container-flex">
+            <a class="navbar-brand text-light" href="Inicio.html">Inicio</a>
+            <a class="navbar-brand text-light" href="About.html">Acerca de</a>
+            <a class="navbar-brand text-light" href="Limitaciones.html">Limitaciones</a>
+            <a class="navbar-brand text-light" href="Vision.html">Vision</a>
+        </div>
+    </header>
+    <body>
+        <div class="container col-3">
+            <h6 style="text-align: center;">Indique la direccion URL desde donde se obtendra la imagen</h6>
+            <input id="direccion" class="form-control" type="text" name="direccion" placeholder="Direccion URL" />
+            <h6 style="text-align: center;">-------Filtros de reconocimiento-------</h6>
+            <div style="text-align: center;">
+                <label style="text-align: center;">Hombre</label>
+                <input class="form-check-input-inline" type="checkbox" value="Male" id="Hombre" checked>
+                <label style="text-align: center;">Mujer</label>
+                <input class="form-check-input-inline" type="checkbox" value="Female" id="Mujer" checked>
+                <br>
+                <label style="text-align: center;">Edad minima</label>
+                <input id="edadMin" class="form-control" type="number" name="edadMin" placeholder="Edad minima" min="0" value="0"/>
+                <label style="text-align: center;">Edad maxima</label>
+                <input id="edadMax" class="form-control" type="number" name="edadMax" placeholder="Edad maxima" min="0" value="99"/>
+            </div>
+            <button class="btn btn-dark col-12" onclick="pedir()">Analizar caras</button>
+        </div>
+        <div style="width: 100%; text-align:center;">
+            <canvas id="myCanvas" width="1000" height="1000" style="border:1px solid #d3d3d3; display: inline;">
+            </canvas>
+        </div>
+        <script src="script/script.js"></script>
+    </body>
+</html>
