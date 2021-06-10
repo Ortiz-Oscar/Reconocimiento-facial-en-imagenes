@@ -87,8 +87,8 @@ function validarErrores() {
     if (edadMax < edadMin && document.getElementById('Aplicarfiltros').checked) {
         errores('Rango de edades no válido');
         return true;
-    } else if (url.length == 0 && document.getElementById('Aplicarfiltros').checked) {
-        errores("No ha indicado una direccion");
+    } else if (url.length == 0) {
+        errores("No ha indicado una direccion para la imagen");
         return true;
     } else if ((edadMax.length == 0 || edadMin.length == 0) && document.getElementById('Aplicarfiltros').checked) {
         errores("Rangos de edad vacios");
