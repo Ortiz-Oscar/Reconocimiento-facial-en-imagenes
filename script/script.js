@@ -37,6 +37,8 @@ function procesar(data, url) {
     var faces_info = JSON.parse(data);
     if (faces_info.error) {
         errores("URL inválida, la dirección ingresada no es accesible");
+    }else if(faces_info.faces.length == 0){
+        errores("No se han encontrado rostros en la imagen");
     } else {
         //Espacio donde se ponen las imagenes
         var canva = document.getElementById('myCanvas');
