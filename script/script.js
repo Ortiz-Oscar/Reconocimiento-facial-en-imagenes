@@ -36,7 +36,7 @@ function procesar(data, url) {
     //------------------------
     var faces_info = JSON.parse(data);
     if (faces_info.error) {
-        alert("URL inválida");
+        errores("URL inválida");
     } else {
         //Espacio donde se ponen las imagenes
         var canva = document.getElementById('myCanvas');
@@ -85,16 +85,16 @@ function validarErrores() {
     var Female = document.getElementById('Mujer');
     var url = document.getElementById('direccion').value;
     if (edadMax < edadMin && document.getElementById('Aplicarfiltros').checked) {
-        alert('Rango de edades no válido');
+        errores('Rango de edades no válido');
         return true;
     } else if (url.length == 0 && document.getElementById('Aplicarfiltros').checked) {
-        alert("No ha indicado una direccion");
+        errores("No ha indicado una direccion");
         return true;
     } else if ((edadMax.length == 0 || edadMin.length == 0) && document.getElementById('Aplicarfiltros').checked) {
-        alert("Rangos de edad vacios");
+        errores("Rangos de edad vacios");
         return true;
     } else if ((Male.checked == false && Female.checked == false) && document.getElementById('Aplicarfiltros').checked) {
-        alert("No ha especificado el sexo");
+        errores("No ha especificado el sexo");
         return true;
     }
     else {
@@ -103,9 +103,22 @@ function validarErrores() {
 }
 function ocultarFiltros(){
     var espacios = document.getElementById('filtros');
-    if (espacios.style.display === "none") {
-        espacios.style.display = "block";
-      } else {
+    if(document.getElementById('Aplicarfiltros').checked){
+        if (espacios.style.display === "none") {
+            espacios.style.display = "block";
+        }
+    }else {
         espacios.style.display = "none";
-      }
+    }
 }
+function errores(mensaje){
+    var alerta = document.getElementById('alerta');
+    alerta.innerHTML="";
+    if (alerta.style.display === "none") {
+        alerta.style.display = "block";
+    }
+    alerta.appendChild(document.createTextNode(mensaje));
+    //alerta.innerHTML = "";
+    $('#alerta').delay(3000).hide(0); 
+}
+ocultarFiltros();

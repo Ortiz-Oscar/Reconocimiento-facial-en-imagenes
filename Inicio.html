@@ -18,14 +18,15 @@
         </div>
     </header>
     <body>
+        <div class="alert alert-danger" id="alerta" role="alert" style="display: none; text-align: center;"></div>
         <div class="container col-3 p-3">
             <h6 style="text-align: center;">Indique la direccion URL desde donde se obtendra la imagen</h6>
             <input id="direccion" class="form-control" type="text" name="direccion" placeholder="Direccion URL" />
             <div class="form-check form-switch">
                 <label class="form-check-label" for="Aplicarfiltros">Aplicar filtros</label>
-                <input class="form-check-input" onclick="ocultarFiltros()" type="checkbox" id="Aplicarfiltros">
+                <input class="form-check-input" onclick="ocultarFiltros()" type="checkbox" id="Aplicarfiltros" checked>
             </div>
-            <div id="filtros" style="text-align: center; display: none;">
+            <div id="filtros" style="text-align: center;">
                 <label style="text-align: center;">Hombre</label>
                 <input class="form-check-input-inline" type="checkbox" value="Male" id="Hombre" checked>
                 <label style="text-align: center;">Mujer</label>
