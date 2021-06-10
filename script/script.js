@@ -1,6 +1,6 @@
 function pedir() {
     var url = document.getElementById('direccion').value;
-    if (validarErrores() == false) {
+    if (!validarErrores()) {
         $.ajax({
             type: "POST",
             url: 'Peticion.php',
@@ -36,7 +36,7 @@ function procesar(data, url) {
     //------------------------
     var faces_info = JSON.parse(data);
     if (faces_info.error) {
-        errores("URL inválida");
+        errores("URL inválida, la dirección ingresada no es accesible");
     } else {
         //Espacio donde se ponen las imagenes
         var canva = document.getElementById('myCanvas');
@@ -52,17 +52,15 @@ function procesar(data, url) {
             array.forEach(e => {
                 //Cargamos los cuadros sobre las caras
                 if(aplicarFiltros){
-                    if (edadMin <= e.age && e.age <= edadMax) {
-                        if (sexos.includes(e.gender)) {
-                            ctx.font = "10 Arial";
-                            ctx.fillStyle = "yellow";
-                            ctx.fillText("Gender: " + e.gender + "  Age: " + e.age, e.faceRectangle.left - 10, e.faceRectangle.top - 5);
-                            ctx.beginPath();
-                            ctx.rect(e.faceRectangle.left, e.faceRectangle.top, e.faceRectangle.width, e.faceRectangle.height);
-                            ctx.strokeStyle = "yellow";
-                            ctx.lineWidth = 5;
-                            ctx.stroke();
-                        }
+                    if (edadMin <= e.age && e.age <= edadMax && sexos.includes(e.gender)) {
+                        ctx.font = "10 Arial";
+                        ctx.fillStyle = "yellow";
+                        ctx.fillText("Gender: " + e.gender + "  Age: " + e.age, e.faceRectangle.left - 10, e.faceRectangle.top - 5);
+                        ctx.beginPath();
+                        ctx.rect(e.faceRectangle.left, e.faceRectangle.top, e.faceRectangle.width, e.faceRectangle.height);
+                        ctx.strokeStyle = "yellow";
+                        ctx.lineWidth = 5;
+                        ctx.stroke();
                     }
                 }else{
                     ctx.font = "10 Arial";
@@ -84,7 +82,7 @@ function validarErrores() {
     var Male = document.getElementById('Hombre');
     var Female = document.getElementById('Mujer');
     var url = document.getElementById('direccion').value;
-    if (edadMax < edadMin && document.getElementById('Aplicarfiltros').checked) {
+    if ((edadMax < edadMin) || (edadMax>100) && document.getElementById('Aplicarfiltros').checked) {
         errores('Rango de edades no válido');
         return true;
     } else if (url.length == 0) {
@@ -118,7 +116,6 @@ function errores(mensaje){
         alerta.style.display = "block";
     }
     alerta.appendChild(document.createTextNode(mensaje));
-    //alerta.innerHTML = "";
-    $('#alerta').delay(3000).hide(0); 
+    $('#alerta').delay(5000).hide(0); 
 }
 ocultarFiltros();

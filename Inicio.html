@@ -14,7 +14,7 @@
             <a class="navbar-brand text-light" href="Inicio.html">Inicio</a>
             <a class="navbar-brand text-light" href="About.html">Acerca de</a>
             <a class="navbar-brand text-light" href="Limitaciones.html">Limitaciones</a>
-            <a class="navbar-brand text-light" href="Vision.html">Vision</a>
+            <a class="navbar-brand text-light" href="Vision.html">Futuro proximo</a>
         </div>
     </header>
     <body>
@@ -24,7 +24,7 @@
             <input id="direccion" class="form-control" type="text" name="direccion" placeholder="Direccion URL" />
             <div class="form-check form-switch">
                 <label class="form-check-label" for="Aplicarfiltros">Aplicar filtros</label>
-                <input class="form-check-input" onclick="ocultarFiltros()" type="checkbox" id="Aplicarfiltros" checked>
+                <input class="form-check-input" onclick="ocultarFiltros()" type="checkbox" id="Aplicarfiltros">
             </div>
             <div id="filtros" style="text-align: center;">
                 <label style="text-align: center;">Hombre</label>
@@ -32,10 +32,8 @@
                 <label style="text-align: center;">Mujer</label>
                 <input class="form-check-input-inline" type="checkbox" value="Female" id="Mujer" checked>
                 <br>
-                <label style="text-align: center;">Edad minima</label>
-                <input id="edadMin" class="form-control" type="number" name="edadMin" placeholder="Edad minima" min="0" value="0"/>
-                <label style="text-align: center;">Edad maxima</label>
-                <input id="edadMax" class="form-control" type="number" name="edadMax" placeholder="Edad maxima" min="0" value="99"/>
+                <input id="edadMin" class="form-control" type="number" name="edadMin" placeholder="Edad minima" min="0" max="100"/>
+                <input id="edadMax" class="form-control" type="number" name="edadMax" placeholder="Edad maxima" min="0" max="100"/>
             </div>
             <button class="btn btn-outline-dark col-12" onclick="pedir()">Analizar caras</button>
         </div>
