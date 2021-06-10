@@ -1,6 +1,6 @@
 function pedir(){
     var url = document.getElementById('direccion').value;
-    if(validarErrores() == false){
+    if(!validarErrores()){
         $.ajax({
             type: "POST",
             url: 'Peticion.php',
