@@ -17,12 +17,32 @@
     </div>
 </header>
 <body>
-    <p style="text-align: center; font-size: 1.2em;">En este apartado se exponen los limitantes de la aplicación generadas por el uso de computer visión de azure</p>
-    <p>Punto de vista</p>
-    <p>Oclusión</p>
-    <p>Escala</p>
-    <p>Deformación</p>
-    <p>Fondo desordenado</p>
-    <p>Calidad de imagen</p>
+    <p style="text-align: center; font-size: 1.2em;">En este apartado se exponen los limitantes que afectan negativamente la aplicación</p>
+    <h4 style="text-align: center;">Punto de vista</h4>
+    <div class="d-inline-flex border border-bottom-0">
+        <img src="PuntoVista.jpg" width="250" height="250" alt="Perspectivas">
+        <p class="d-inline-flex"> La visión artificial es muy dependiente de la perspectiva de la imagen que se le presenta. Para efectos del proyecto puede que en ciertas ocasiones no detecte rostros
+    debido a que la percepción de rostros en las imagenes se ve limitada al frente de la cara y no a las distintas direcciones desde donde se puede percibir un rostro</p>
+    </div>
+    <h4 style="text-align: center;">Resolución de la imagen</h4>
+    <div class="d-inline-flex border border-bottom-0">
+        <p class="d-inline-flex"> El tamaño de la imagen ingresada en la aplicación puede afectar el reconocimiento debido a mayor calidad de resolución, mejor es el reconocimiento. En imagenes de baja resolución puede ocurrir
+            que no consiga identificar rostros aunque los hubiera por la nula diferenciación entre pixeles y otros factores manejados por el modelo de computer visión.
+        </p>
+    <img src="https://pc-solucion.es/wp-content/uploads/2019/01/que-es-el-1080i-1024x578.jpg" width="300" height="250" alt="Resoluciones">
+    </div>
+    <h4 style="text-align: center;">Filtros en imagen</h4>
+    <div class="d-inline-flex border border-bottom-0">
+        <img src="https://i.pinimg.com/originals/21/1c/89/211c896dc3dc3efaab3b760a53b5513b.jpg" width="300" height="250" alt="Resoluciones">
+        <p class="d-inline-flex"> La deformación de las imagenes puede causar la difuminación de pixeles y alterar el resultado del reconocimiento debido a que el modelo de vision artificial podría malinterpretar los pixeles y sacar conclusiones
+            incorrectas o no encontrar del todo rostros
+        </p>
+    </div>
+    <h4 style="text-align: center;">Fondo desordenado</h4>
+    <div class="d-inline-flex border border-bottom-0">
+        <p class="d-inline-flex"> La cantidad de tonalidades presentes en fondos desordenados causa que el modelo no pueda encontrar patrones de distincion de rostros, lo cual se refleja en el resultado final no encontrando del todo resultados
+        </p>
+        <img src="https://www.skillshare.com/blog/wp-content/uploads/2018/01/ScreenShot2021-01-12at2.14.11PM.png" width="300" height="250" alt="Resoluciones">
+    </div>
 </body>
 </html>
