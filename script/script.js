@@ -7,7 +7,6 @@ function pedir() {
             data: { direccion: url },
             success: function (data) {
                 procesar(data,url);
-                console.log(data);
             },
             error: function (xhr, status, error) {
                 alert(xhr);
@@ -46,10 +45,17 @@ function procesar(data, url) {
         ctx.clearRect(0, 0, canva.width, canva.height)
         var background = new Image();
         background.src = url;
-        background.width = 1000;
-        background.height = 1000;
+
         background.onload = function () {
-            ctx.drawImage(background, 0, 0);
+            ctx.drawImage(background, 0, 0, 1000,1000);
+
+
+            var resizeAncho = tamanno(background.naturalWidth);
+            var resizeAlto = tamanno(background.naturalHeight);
+            console.log("Altura " + resizeAncho);
+            console.log("Ancho " + resizeAlto);
+
+
             var array = faces_info.faces;
             array.forEach(e => {
                 //Cargamos los cuadros sobre las caras
@@ -57,7 +63,7 @@ function procesar(data, url) {
                     if (edadMin <= e.age && e.age <= edadMax && sexos.includes(e.gender)) {
                         ctx.font = "10 Arial";
                         ctx.fillStyle = "yellow";
-                        ctx.fillText("Gender: " + e.gender + "  Age: " + e.age, e.faceRectangle.left - 10, e.faceRectangle.top - 5);
+                        ctx.fillText("Gender: " + e.gender + "  Age: " + e.age, e.faceRectangle.left, e.faceRectangle.top);
                         ctx.beginPath();
                         ctx.rect(e.faceRectangle.left, e.faceRectangle.top, e.faceRectangle.width, e.faceRectangle.height);
                         ctx.strokeStyle = "yellow";
@@ -67,9 +73,9 @@ function procesar(data, url) {
                 }else{
                     ctx.font = "10 Arial";
                     ctx.fillStyle = "yellow";
-                    ctx.fillText("Gender: " + e.gender + "  Age: " + e.age, e.faceRectangle.left - 10, e.faceRectangle.top - 5);
+                    ctx.fillText("Gender: " + e.gender + "  Age: " + e.age,  e.faceRectangle.left*resizeAncho, e.faceRectangle.top*resizeAlto - 10);
                     ctx.beginPath();
-                    ctx.rect(e.faceRectangle.left, e.faceRectangle.top, e.faceRectangle.width, e.faceRectangle.height);
+                    ctx.rect(e.faceRectangle.left*resizeAncho, e.faceRectangle.top*resizeAlto, e.faceRectangle.width*resizeAncho, e.faceRectangle.height*resizeAlto);
                     ctx.strokeStyle = "yellow";
                     ctx.lineWidth = 5;
                     ctx.stroke();
@@ -119,5 +125,8 @@ function errores(mensaje){
     }
     alerta.appendChild(document.createTextNode(mensaje));
     $('#alerta').delay(5000).hide(0); 
+}
+function tamanno(valor){
+    return 1000/valor;
 }
 ocultarFiltros();
