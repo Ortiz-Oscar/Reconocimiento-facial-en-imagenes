@@ -83,14 +83,14 @@ function validarErrores() {
     var Male = document.getElementById('Hombre');
     var Female = document.getElementById('Mujer');
     var url = document.getElementById('direccion').value;
-    if ((edadMax < edadMin) || (edadMax>100) && document.getElementById('Aplicarfiltros').checked) {
+    if ((edadMax < edadMin) || (edadMax > 100) || (edadMin < 0) && document.getElementById('Aplicarfiltros').checked) {
         errores('Rango de edades no válido');
         return true;
     } else if (url.length == 0) {
         errores("No ha indicado una direccion para la imagen");
         return true;
     } else if ((edadMax.length == 0 || edadMin.length == 0) && document.getElementById('Aplicarfiltros').checked) {
-        errores("Rangos de edad vacios");
+        errores("Faltan rangos de edad");
         return true;
     } else if ((Male.checked == false && Female.checked == false) && document.getElementById('Aplicarfiltros').checked) {
         errores("No ha especificado el sexo");
