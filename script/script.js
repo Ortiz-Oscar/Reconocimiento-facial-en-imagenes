@@ -1,6 +1,7 @@
 function pedir() {
     var url = document.getElementById('direccion').value;
     if (!validarErrores()) {
+        /*
         $.ajax({
             type: "POST",
             url: 'Peticion.php',
@@ -12,9 +13,30 @@ function pedir() {
                 alert(xhr);
             }
         });
-        var datos = new XMLHttpRequest();
-        datos.open('POST', 'Azure.php', true);
-        datos.send();
+        */
+        $.ajax({
+            url: 'https://eastus.api.cognitive.microsoft.com/vision/v3.2/analyze?visualFeatures=Faces&language=en&model-version=latest',
+
+            // Request headers.
+            beforeSend: function(xhrObj){
+                xhrObj.setRequestHeader("Content-Type","application/json");
+                xhrObj.setRequestHeader(
+                    "Ocp-Apim-Subscription-Key", '7b89298d4ae74ee992210d545dab4a63');
+            },
+            type: "POST",
+            data: '{"url": ' + '"' + url + '"}',
+        })
+
+        .done(function(data) {
+            // Formatted JSON on webpage.
+            var data = JSON.stringify(data, null, 2);
+            procesar(data,url);
+        })
+
+        .fail(function(jqXHR, textStatus, errorThrown) {
+            // Display error message.
+            errores(jqXHR);
+        });
     }
 }
 function procesar(data, url) {
