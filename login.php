@@ -1,21 +1,30 @@
 <?php
+session_start();
+/*
 if(isset($_POST['username']) && isset($_POST['password'])){
-        $username = $_POST['username'];
-        $password = $_POST['password'];
-        if(isset($username,$password)){
-                $ldapconfig['basedn'] = 'dc=redes,dc=tigre';//CHANGE THIS TO THE CORRECT BASE DN
-                $ldapconfig['usersdn'] = 'cn=users';//CHANGE THIS TO THE CORRECT USER OU/CN
-                $conexion=ldap_connect('ldap://10.2.0.6:389') or die("No se pudo conectar al host ldap");//Direccion IP de la maquina virtual con Activa directory
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+    if(isset($username,$password)){
+        $ldapconfig['basedn'] = 'dc=redes,dc=tigre';//CHANGE THIS TO THE CORRECT BASE DN
+        $ldapconfig['usersdn'] = 'cn=users';//CHANGE THIS TO THE CORRECT USER OU/CN
+        $conexion=ldap_connect('ldap://10.2.0.6:389') or die("No se pudo conectar al host ldap");//Direccion IP de la maquina virtual con Activa directory
 
-                ldap_set_option($conexion, LDAP_OPT_PROTOCOL_VERSION, 3);
-                ldap_set_option($conexion, LDAP_OPT_REFERRALS, 0);
-                if ($bind = ldap_bind($conexion, $username, $password)) {
-                        //echo("Inicio de sesión correcto");//REPLACE THIS WITH THE CORRECT FUNCTION LIKE A REDIRECT;
-                        header("Location: Inicio");
-                } else {
-                        echo "Nombre de usuario o contrasenna incorrecta";
-                }
+        ldap_set_option($conexion, LDAP_OPT_PROTOCOL_VERSION, 3);
+        ldap_set_option($conexion, LDAP_OPT_REFERRALS, 0);
+        if ($bind = ldap_bind($conexion, $username, $password)) {
+            //echo("Inicio de sesión correcto");//REPLACE THIS WITH THE CORRECT FUNCTION LIKE A REDIRECT;
+            header("Location: Inicio");
+        } else {
+            echo "Nombre de usuario o contrasenna incorrecta";
         }
+    }
+}
+*/
+if(isset($_POST['username']) && isset($_POST['password'])){
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+    $_SESSION['username'] = $username;
+    header('Location: Inicio.php');
 }
 ?>
 <!DOCTYPE html>

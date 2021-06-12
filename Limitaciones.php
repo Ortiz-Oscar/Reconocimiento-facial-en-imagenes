@@ -1,23 +1,39 @@
-<!DOCTYPE html>
+<?php
+    session_start();      
+    if(isset($_POST['logout'])){
+        session_unset();
+        session_destroy();
+        header('Location: login.php');
+    }      
+?>
 <html>
-<head>
-    <meta charset='utf-8'>
-    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>Limitaciones</title>
-    <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel="stylesheet" href="style/bootstrap.css">
-    <link rel="stylesheet" href="style/bootstrap.min.css">
-</head>
+    <head>
+        <meta charset='utf-8'>
+        <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+        <title>Proyecto redes</title>
+        <meta name='viewport' content='width=device-width, initial-scale=1'>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="style/bootstrap.css">
+        <link rel="stylesheet" href="style/bootstrap.min.css">
+    </head>
+    <body>
+        <?php
+            if(isset($_SESSION['username'])){
+                echo '
 <header class="navbar navbar-expand-lg navbar-light bg-dark">
     <div class="container-flex">
-        <a class="navbar-brand text-light" href="Inicio.html">Inicio</a>
-        <a class="navbar-brand text-light" href="About.html">Acerca de</a>
-        <a class="navbar-brand text-light" href="Limitaciones.html">Limitaciones</a>
-        <a class="navbar-brand text-light" href="Vision.html">Futuro proximo</a>
+        <a class="navbar-brand text-light" href="Inicio.php">Inicio</a>
+        <a class="navbar-brand text-light" href="About.php">Acerca de</a>
+        <a class="navbar-brand text-light" href="Limitaciones.php">Limitaciones</a>
+        <a class="navbar-brand text-light" href="Vision.php">Futuro proximo</a>
+        <form method="POST" action="" style="display: inline-flex;">
+            <input type="submit" name="logout" class="btn btn-outline-light" value="Salir"/>
+        </form>
     </div>
 </header>
 <body>
-    <p style="text-align: center; font-size: 1.2em;">En este apartado se exponen los limitantes que afectan negativamente la aplicación</p>
+    <h3 style="text-align: center;">En este apartado se exponen los limitantes que afectan negativamente la aplicación</h3>
+    <br>
     <h4 style="text-align: center;">Punto de vista</h4>
     <div class="d-inline-flex border border-bottom-0">
         <img src="PuntoVista.jpg" width="250" height="250" alt="Perspectivas">
@@ -45,4 +61,10 @@
         <img src="https://www.skillshare.com/blog/wp-content/uploads/2018/01/ScreenShot2021-01-12at2.14.11PM.png" width="300" height="250" alt="Resoluciones">
     </div>
 </body>
+                ';
+            }else{
+                header('Location: login.php');
+            }
+        ?>
+    </body>
 </html>
