@@ -16,8 +16,6 @@ function pedir() {
         */
         $.ajax({
             url: 'https://eastus.api.cognitive.microsoft.com/vision/v3.2/analyze?visualFeatures=Faces&language=en&model-version=latest',
-
-            // Request headers.
             beforeSend: function(xhrObj){
                 xhrObj.setRequestHeader("Content-Type","application/json");
                 xhrObj.setRequestHeader(
@@ -26,16 +24,12 @@ function pedir() {
             type: "POST",
             data: '{"url": ' + '"' + url + '"}',
         })
-
         .done(function(data) {
-            // Formatted JSON on webpage.
             var data = JSON.stringify(data, null, 2);
             procesar(data,url);
         })
-
         .fail(function(jqXHR, textStatus, errorThrown) {
-            // Display error message.
-            errores(jqXHR);
+            errores(errorThrown);
         });
     }
 }

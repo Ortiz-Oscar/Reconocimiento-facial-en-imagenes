@@ -36,7 +36,7 @@
     <br>
     <h4 style="text-align: center;">Punto de vista</h4>
     <div class="d-inline-flex border border-bottom-0">
-        <img src="PuntoVista.jpg" width="250" height="250" alt="Perspectivas">
+        <img src="https://modaellos.com/wp-content/uploads/2019/07/tipo-rostro-600x627.jpg" width="250" height="250" alt="Perspectivas">
         <p class="d-inline-flex"> La visión artificial es muy dependiente de la perspectiva de la imagen que se le presenta. Para efectos del proyecto puede que en ciertas ocasiones no detecte rostros
     debido a que la percepción de rostros en las imagenes se ve limitada al frente de la cara y no a las distintas direcciones desde donde se puede percibir un rostro</p>
     </div>

@@ -1,6 +1,6 @@
 <?php
     session_start();
-    $bg = 'UNA.png';      
+    $bg = 'https://upload.wikimedia.org/wikipedia/commons/9/9c/UNA.png';      
     if(isset($_POST['logout'])){
         session_unset();
         session_destroy();
