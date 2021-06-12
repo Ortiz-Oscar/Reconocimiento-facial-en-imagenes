@@ -1,19 +1,6 @@
 function pedir() {
     var url = document.getElementById('direccion').value;
     if (!validarErrores()) {
-        /*
-        $.ajax({
-            type: "POST",
-            url: 'Peticion.php',
-            data: { direccion: url },
-            success: function (data) {
-                procesar(data,url);
-            },
-            error: function (xhr, status, error) {
-                alert(xhr);
-            }
-        });
-        */
         $.ajax({
             url: 'https://eastus.api.cognitive.microsoft.com/vision/v3.2/analyze?visualFeatures=Faces&language=en&model-version=latest',
             beforeSend: function(xhrObj){
@@ -29,7 +16,7 @@ function pedir() {
             procesar(data,url);
         })
         .fail(function(jqXHR, textStatus, errorThrown) {
-            errores(errorThrown);
+            errores(textStatus);
         });
     }
 }
